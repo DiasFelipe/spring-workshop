@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.workshop.springmongo.domain.User;
-import com.workshop.springmongo.repository.UseRepository;
+import com.workshop.springmongo.repository.UserRepository;
 
 @Service
 public class UserService {
 
 	@Autowired
-	private UseRepository repo;
+	private UserRepository repo;
 	
 	public List<User> findAll(){
 		return repo.findAll();
