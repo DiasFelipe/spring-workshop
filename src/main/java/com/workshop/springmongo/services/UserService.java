@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.workshop.springmongo.domain.User;
+import com.workshop.springmongo.dto.UserDTO;
 import com.workshop.springmongo.repository.UserRepository;
 import com.workshop.springmongo.services.exception.ObjectNotFoundException;
 
@@ -25,5 +26,13 @@ public class UserService {
 			throw new IllegalArgumentException("Id argument connit be empty");
 		Optional<User> user  = repo.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("User not found by id"));
+	}
+	
+	public User insert(User user) {
+		return repo.insert(user);
+	}
+	
+	public User fromDTO(UserDTO user) {
+		return new User(user.getId(), user.getName(), user.getEmail());
 	}
 }
